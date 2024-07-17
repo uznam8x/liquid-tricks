@@ -3,7 +3,7 @@
 ## CODE
 ```liquid copy
 {% liquid
-    assign rows = source | strip | newline_to_br | split: '<br />'
+    assign rows = source | strip | newline_to_br | strip_newlines | replace: '<br /><br />', '<br />' | split: '<br />'
     assign headers = rows[0] | split: '|'
     echo "["
     for row in rows offset:1
